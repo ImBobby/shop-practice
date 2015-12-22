@@ -67,6 +67,10 @@
             });
 
             $cartlist.on('click', '.cart-remove', function (e) {
+                var isConfirmRemove = confirm('Are you sure?');
+
+                if ( !isConfirmRemove ) return;
+
                 var $parent = $(this).parent();
                 var $uiPrice = $parent.find('.ui-price');
                 var price = $uiPrice.data('price');
@@ -114,7 +118,7 @@
             function subtractTotal(price) {
                 var total = Number($total.attr('data-price')) - price;
                 var uiTotal = numeral(total).format('0,0');
-                console.log(total)
+                console.log(total);
                 $total.attr('data-price', total);
                 $total.html(uiTotal);
             }
