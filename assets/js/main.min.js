@@ -60,8 +60,10 @@
                 var $this = $(this);
                 var productName = $this.data('name');
                 var productPrice = $this.data('price');
+                var productId = $this.data('id');
 
-                inputNewItem(productName, productPrice);
+                $this.prop('disabled', 'true');
+                inputNewItem(productName, productPrice, productId);
                 calculateTotal();
                 numericAllPrices();
             });
@@ -71,15 +73,18 @@
 
                 if ( !isConfirmRemove ) return;
 
+                var id = $(this).data('id');
                 var $parent = $(this).parent();
                 var $uiPrice = $parent.find('.ui-price');
                 var price = $uiPrice.data('price');
 
                 subtractTotal(price);
                 $parent.remove();
+
+                enableBtnWithId(id);
             });
 
-            function inputNewItem(name, price) {
+            function inputNewItem(name, price, id) {
                 var template = 
                     '<li class="cart-list__item">' +
                         '<dl class="cart-item cf">' + 
@@ -88,7 +93,7 @@
                             '<dt class="sr-only">Price</dt>' +
                             '<dd class="cart-item__price ui-price" data-price="' + price + '">' + price + '</dd>' +
                         '</dl>' +
-                        '<button class="cart-remove">&times;</button>' +
+                        '<button class="cart-remove" data-id="' + id + '">&times;</button>' +
                     '</li>';
 
                 $cartlist.append(template);
@@ -118,9 +123,13 @@
             function subtractTotal(price) {
                 var total = Number($total.attr('data-price')) - price;
                 var uiTotal = numeral(total).format('0,0');
-                console.log(total);
+
                 $total.attr('data-price', total);
                 $total.html(uiTotal);
+            }
+
+            function enableBtnWithId(id) {
+                $('.product__btn[data-id="'+id+'"]').removeAttr('disabled');
             }
         }
 

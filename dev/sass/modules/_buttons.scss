@@ -50,6 +50,10 @@ $BTN_PADDING: $space/3 $space;
 .btn--primary {
     color: #fff;
     background: #019AE8;
+
+    &[disabled] {
+        background: darken(#019AE8, 10%);
+    }
 }
 
 .btn--block {

@@ -684,6 +684,10 @@ table {
   background: #019AE8;
 }
 
+.btn--primary[disabled] {
+  background: #0178b5;
+}
+
 .btn--block {
   width: 100%;
 }
