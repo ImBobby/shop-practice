@@ -1,0 +1,11 @@
+
+.product-list {
+    margin-left: ($space * -1);
+}
+
+.product-list__item {
+    float: left;
+    width: 33.3%;
+    padding-left: ($space * 1);
+    margin-bottom: ($space * 1);
+}

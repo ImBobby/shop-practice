@@ -1,0 +1,18 @@
+
+.product__figure {
+    margin-bottom: ($space / 2);
+}
+
+.product__figure__img {
+    margin-bottom: ($space / 2);
+}
+
+.product__price {
+    display: block;
+    margin-bottom: ($space / 2);
+}
+
+.product__btn {
+    width: calc(100% + #{$space});
+    margin-left: $space / 2 * -1;
+}
